@@ -17,7 +17,7 @@
 > To detach from container press CTRL + P followed by CTRL + Q (or exit?)
 
 | Command                                         | Explanation                       |
-| ----------------------------------------------- |:---------------------------------:|
+| ----------------------------------------------- |:--------------------------------- |
 | `docker ps -a`                                  | Overview of containers            |
 | `docker images`                                 | Overview of images (locally)      |
 | `docker search httpd`                           | Search on docker hub              |
@@ -37,6 +37,13 @@
 | `docker run -it --link redis my_node /bin/bash` | Example: Run (it/linking)         |
 
 ## Dockerfile
+
+### Example 0: Dockerfile
+
+```
+FROM nginx
+COPY nginx.conf /etc/nginx/nginx.conf
+```
 
 ### Example 1: Dockerfile
 
@@ -76,11 +83,6 @@ CMD nodejs /src/index.js
 
 ```
 
-### Example 2: Dockerfile
-
-```
-
-```
 
 ## Docker compose
 
