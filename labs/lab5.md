@@ -1,1 +1,59 @@
 # Lab 5:
+
+
+
+
+
+## Files
+
+### Docker-compose.yaml
+
+```yaml
+
+version: '2'
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+        ZOOKEEPER_CLIENT_PORT: 2181
+  kafka:
+    image: confluentinc/cp-kafka
+    links:
+     - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  invoicing:
+    build: invoicing
+    links:
+     - zookeeper
+     - kafka
+     - mongo
+    depends_on:
+     - kafka
+     - mongo
+    volumes:
+     - ./invoicing:/src
+  invoicingtester:
+    build: invoicingTester
+    links:
+     - zookeeper
+     - kafka
+     - invoicing
+    depends_on:
+     - invoicing
+    volumes:
+     - ./invoicingTester:/src
+
+
+```
