@@ -1,3 +1,3 @@
-# My Awesome Book
+# Systeemontwerp / System design
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+Probably only an overview of the labs!
