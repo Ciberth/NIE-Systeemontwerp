@@ -150,7 +150,7 @@ Je legt da vast en dan pas begin je te implementeren.
 
 **"Over microservices heen gaan we geen datastores, services delen"**
 
-Polyglot = meertalig. Elke services heeft zijn eigen vrijhoud om alles zelf te ontwerpen. Je hebt dus niet langer 1 gedeelte databank. Al die dao (database access objects?) zitten bij mekaar traditioneel bij die monolith. 
+Polyglot = meertalig. Elke services heeft zijn eigen vrijheid om alles zelf te ontwerpen. Je hebt dus niet langer 1 gedeelte databank. Al die dao (database access objects?) zitten bij mekaar traditioneel bij die monolith. 
 
 Ook nadelen!
 Het hangt er dus van af eh.
@@ -158,7 +158,7 @@ Het hangt er dus van af eh.
 
 ## Micro-service deployment
 
-belangrjk verschil tss container vm
+belangrijk verschil tss container vm
 
 bij vm kan je makkelijk delen ik op mijn windows aan u op uw debian
 

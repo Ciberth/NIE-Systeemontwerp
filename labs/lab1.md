@@ -92,7 +92,7 @@ CMD nodejs /src/index.js
 
 ### Example 1: docker-compose.yaml
 
-```
+```yaml
 version: '3'
 services:
   nodejs:
@@ -110,7 +110,7 @@ services:
 
 ### Example 2: docker-compose.yaml
 
-```
+```yaml
 version: '3'
 services:  
   nodejs1:
