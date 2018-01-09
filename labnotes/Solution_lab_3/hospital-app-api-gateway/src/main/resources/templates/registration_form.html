@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <!-- <script src="/app.js"></script>-->
+</head>
+<body>
+<div id="main-content" class="container">
+	<h1>Hospital Application</h1>
+	<h2>Patient Hospital Stay Registration Form</h2>
+    <form action="#" th:action="@{/registration}" th:object="${registration}" method="post">
+    	<p>SSN: <input type="text" th:field="*{patient}" /> </p><!--  th:field="${userId}" /></p>-->
+    	
+    	<p>Prefered room type: 
+    	<select th:field="*{roomTypePreference}">
+		   <option th:each="state : ${T(application.registration.RoomType).values()}"
+		          th:value="${state}" 
+		          th:text="${state}" >
+		   </option>
+		</select>
+		</p>
+		
+		<p>Insurance type: 
+    	<select th:field="*{insuranceType}">
+		   <option th:each="state : ${T(application.registration.InsuranceType).values()}"
+		          th:value="${state}" 
+		          th:text="${state}" >
+		   </option>
+		</select>
+		</p>
+    	
+    	<!-- <p>Registration date: <input type="datetime-local" th:field="*{registrationDateTime}" th:value="${#dates.format(#dates.createNow(),'dd-MM-yyyy HH:mm')}"/> </p>-->
+       <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</div>
+</body>
+</html>

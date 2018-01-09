@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+    <!-- <link href="/main.css" rel="stylesheet">-->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>   
+    <script th:inline="javascript"> /*<![CDATA[*/ var patient = JSON.parse([[${patient}]]); var registrationId = [[${registrationId}]]; /*]]>*/ </script>
+    <script src="/app.js"></script>  
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+	<h1>Hospital Application</h1>
+	<h2>Patient Hospital Stay Registration Details</h2>
+          
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Patient details</th>
+                </tr>
+                </thead>
+                <tbody id="patient_details">
+	                <tr><td>ssn:       </td><td> <script> document.write(patient['ssn'])       </script> </td></tr>
+	                <tr><td>name:      </td><td> <script> document.write(patient['firstname']) </script> </td></tr>
+	                <tr><td>last name: </td><td> <script> document.write(patient['lastname'])  </script> </td></tr>
+                </tbody>
+            </table>
+            
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Parking</th>
+                </tr>
+                </thead>
+                <tbody id="parking_code">
+                <tr><td>waiting for parking code </td></tr>
+                </tbody>
+            </table>
+            
+            <!--  <form action="#" th:action="@{/confirm_registration}"  method="post">-->
+            <!--  <input type="hidden" th:value="${registrationId}" name="registrationId" />-->
+            <button id="confirm" class="btn btn-default" type="submit" >Confirm </button>
+         
+            
+           <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Registration details</th>
+                </tr>
+                </thead>
+                <tbody id="registration_details">
+                <tr><td> Waiting for patient details </td></tr>
+                </tbody>
+            </table>
+            
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Invoice details</th>
+                </tr>
+                </thead>
+                <tbody id="invoice_details">
+                <tr><td> Waiting for patient details </td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
