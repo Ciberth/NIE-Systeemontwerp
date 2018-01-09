@@ -34,9 +34,11 @@ server.port=2222
 #spring.datasource.username=root
 #spring.datasource.password=password
 
-spring.data.mongodb.host=mymongo
-spring.data.mongodb.port=27017
+#spring.data.mongodb.host=mymongo
+#spring.data.mongodb.port=27017
+spring.data.mongodb.uri=mongodb://mymongo:27017
 spring.data.mongodb.database=composeversie
+
 ```
 
 UserController
@@ -145,10 +147,34 @@ Create Dockerfile & build with ``docker build -t myapp .``
 
 ```
 FROM openjdk:8-jdk-alpine
-ENTRYPOINT ["java", "-jar", "myapp-0.0.1-SNAPSHOT.jar"]
-
+ADD x-mongo-0.0.1-SNAPSHOT.jar x-mongo-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar", "x-mongo-0.0.1-SNAPSHOT.jar"]
 ```
 
-## Run
+## Run --> niemeer afgewerkt
 
 ``docker run -d -p 2222:2222  --name cmyapp myapp``
+
+## Docker compose (docker-compose.yml)
+
+docker-compose up
+```
+version: '3'
+services:
+  smongo:
+    image: mongo
+    hostname: mymongo
+    container_name: mymongo
+    ports:
+      - "27017:27017"
+  smyapp:
+    image: myapp
+    hostname: cmyapp
+    container_name: cmyapp
+    ports:
+      - "2222:2222"
+    links:
+      - "smongo:mymongo"
+    depends_on:
+      - smongo
+```
